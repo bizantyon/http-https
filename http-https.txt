@@ -1,0 +1,273 @@
+HTTP VE HTTPS NEDİR ?
+
+
+HTTP, internet üzerinde bilgi alışverişini sağlayan temel bir protokoldür. Bu tanım, HTTP'nin ne olduğu ve nasıl çalıştığı hakkında kısa ama kapsamlı bir açıklama sunuyor. İnternet tarayıcıları ve web sunucuları arasındaki iletişimi düzenlerken, belirli bir port kullanması da belirtilmiş. Bu açıklama, HTTP'nin genel işlevini anlamak isteyenler için oldukça faydalı olabilir.
+
+HTTPS, HTTP protokolünün güvenli bir versiyonudur. HTTP'nin "S" eklenmesiyle oluşan HTTPS, "Hyper Text Transform Protocol Secure" ifadesinin kısaltmasıdır. Bu protokol, internet üzerinden aktarılan verilerin güvenliğini sağlamak için özel olarak tasarlanmıştır. HTTPS, iletilen verileri şifreleyerek, bilgisayarlar ve sunucular arasında transfer edilen tüm verilerin okunmasını imkansız hale getirir. Bu şifreleme işlemi, aktarılan verileri karıştırmak için çeşitli şifreleme algoritmaları kullanılarak gerçekleştirilir.
+
+Örneğin, şifreniz veya kredi kartı bilgileriniz gibi hassas verileri girmeniz gereken bir web sayfasına gidecekseniz, URL'de görünen web adresindeki HTTP'nin sonuna bir 'S' geldiğini fark edeceksiniz, resimdeki gibi. Bu 'S' ifadesi, şu anda güvenli HTTP kullandığınızı ve hassas verilerin aktarılacağı ve korunacağı anlamına gelir.
+
+Ek olarak, birçok web tarayıcısı, güvenli HTTP'nin yani HTTPS'nin kullanıldığını göstermek için adres çubuğunda bir kilit simgesi gösterecektir. Dolayısıyla, güvenli HTTP kullandığınızda, girdiğiniz herhangi bir hassas veri içeren tüm bilgiler artık açık metin olarak değil, şifrelenmiş bir şekilde internet ortamında dolaşarak web sunucusuna aktarılacaktır.
+
+Bu veriler internet üzerinde dolaşırken, şifrelenmiş bir halde gönderilir ve bu nedenle okunamaz hale gelir. Dolayısıyla, bir bilgisayar korsanı veya hacker bu verileri ele geçirmeye çalışsa bile, bir sürü anlamsız şifrelenmiş veriyle karşılaşır. Verileriniz artık şifrelenmiş olduğu için, bilgisayar korsanları da bu şifreleri kırmakta zorlanır.
+
+
+Bir HTTP isteğinin anatomisi, aşağıdaki bileşenlerden oluşur:
+
+Metod (zorunlu): İsteğin türünü belirtir. Örneğin, GET, POST, PUT, DELETE gibi. 
+Örnek: GET.
+
+Ana Bilgisayar (zorunlu): İstenen kaynağın barındırıldığı ana bilgisayarın adresi. 
+Örnek: www.google.com.
+
+Yol (zorunlu): İstenen kaynağın yerini belirten yol. 
+Örnek: /search.
+
+HTTP Sürümü (zorunlu): Kullanılan HTTP protokolünün sürümünü belirtir. 
+Örnek: HTTP/2.
+
+Başlıklar (isteğe bağlı): İsteği açıklayan ek bilgiler içerir. 
+Örnek: Content-Type: application/json.
+
+Sorgu Dizesi (isteğe bağlı): İstenen kaynağa parametreler eklemek için kullanılır. 
+Örnek: ?q=test.
+
+Gövde (isteğe bağlı): İsteğe ek veri içerebilir. 
+Örnek: {"q": "test"}.
+
+GET: Bu metot, sunucudan veri almak için kullanılır. GET metodu ile sorgu metinleri URL içinde gönderilebilir. Bu yöntemin en önemli faydalarından biri, kullanıcıların sorguları bookmark edebilmesi ve aynı sorguları daha sonra gönderebilmesidir. Ayrıca, tarayıcıda önceki sorgulara "geri" tuşu ile veya tarayıcı geçmişinden çağrılarak aynı sayfalara ulaşılabilir. Ancak, güvenlik açısından, URL'lerin ekranda görüntülenmesi ve URL'in hedefine ulaşıncaya kadar ve hedef sunucu üzerinde iz kayıtlarında görülebilmesi, gönderilen parametrelerin gizliliği gerektiren hassas istekler için sorun oluşturabilir. Bu nedenle, hassas istekler GET metodu ile gönderilmemelidir.
+
+POST: Bu metod, sunucuya veri göndermek için kullanılır. POST metodu ile istek parametreleri hem URL içinde hem de mesaj gövdesinde gönderilebilir. Ancak, sadece mesaj gövdesinin kullanılması, yukarıda belirtilen riskleri engelleyebilir. Tarayıcılar, geri butonuna basıldığında POST isteğinin mesaj gövdesinde yer alan parametreleri tekrar göndermek isteyip istemediğimizi sorduklarında, bu genellikle işlemi yanlışlıkla birden fazla yapmayı önlemek için yapılmıştır. Bu özellik ve güvenlik gerekçeleriyle, bir işlem gerçekleştirilirken POST metodunun kullanılması önerilir.
+PUT: Bu metot, servis sağlayıcı üzerindeki bir kaynağı güncellemek için kullanılır. Güncellenecek kaynağın ID'sini göndermek zorunludur.
+
+HEAD: GET metoduyla benzer işleve sahiptir ancak geri dönen yanıtta mesaj gövdesi bulunmaz (yani başlıklar ve içerikleri GET metoduyla aynıdır). Bu nedenle, bir kaynağın var olup olmadığını kontrol etmek için kullanılabilir.
+
+DELETE: Bu metot, sunucudaki herhangi bir veriyi silmek için kullanılır.
+
+CONNECT: Bu metot, bir proxy sunucu üzerinden başka bir sunucuya bağlanmak ve proxy sunucuyu bir tünel gibi kullanmak için kullanılır.
+
+OPTIONS: Bu metot, belirli bir kaynak için sunucudan kullanılabilecek HTTP metotlarını sorgulamak için kullanılır. Özellikle, bir kaynağın desteklediği HTTP metodlarını öğrenmek isteyen istemciler tarafından kullanılır.
+
+TRACE: Teşhis amaçlı kullanılan bir metoddur. Sunucu, bu metotla gelen istek mesajının içeriğini aynen yanıt gövdesinde geri göndermelidir. Bu yöntem, sunucu ile istemci arasında bir vekil sunucu varsa, bu sunucunun ve yaptığı değişikliklerin tespit edilmesine olanak tanır.
+
+PATCH: Bu metot, bir kaynağa istenilen küçük çaplı değişiklikleri yapmak için kullanılır. Özellikle, bir kaynağın belirli alanlarını güncellemek veya değiştirmek için kullanılır.
+
+SEARCH: Bu metot, bir dizinin altındaki kaynakları sorgulamak için kullanılır. Özellikle, belirli bir dizin veya koleksiyon altında bulunan kaynakları aramak ve filtrelemek için kullanılır.
+
+
+HTTP Durum Kodları
+
+HTTP durum kodları, aktarım işleminin durumunu belirten ve istemciye sunucu tarafından döndürülen kodlardır. Kodlar, genellikle HTTP başlık satırında bulunur ve bir HTTP yanıtının bir parçası olarak gönderilir. Durum kodları, beş farklı sınıfa ayrılır ve her sınıf, kodların ilk rakamlarına göre belirlenir. Aşağıda, bu sınıfların her biri ve aldıkları rol gereği isimleri listelenmiştir:
+
+1xx: Bilgi İsteği
+2xx: Başarı
+3xx: Yönlendirme
+4xx: İstemci Hatası
+5xx: Sunucu Hatası
+
+
+1xx: Bilgi İsteği
+
+Bu sınıf, kullanıcının (yani tarayıcının) gönderdiği isteğin sunucuya ulaştığını ve isteğin işlemine başlandığını belirten HTTP durum kodları sınıfıdır. Bu sınıftaki kodlar şunlardır:
+
+100 — Devam: Sunucu, isteği aldı ve işleme devam ediyor.
+101 — Protokol Değiştirme: Sunucu, istemci tarafından gönderilen isteği kabul etti ve protokol değişikliğini onayladı.
+102 — İşlem: Sunucu, isteği aldı ve işlemi devam ettiriyor. Ancak, cevabın tamamlanması için daha fazla zamana ihtiyaç duyulabilir.
+
+
+2xx: Başarı
+
+Bu sınıf, istemciden gelen talebin sunucuya ulaştığını, sunucu tarafından anlaşıldığını ve başarılı olduğunu ifade eden kodları içerir. Bu sınıftaki kodlar şunlardır:
+
+200 — Başarılı/Tamam: İstek başarıyla işlendi ve sunucu tarafından tamamlandı.
+201 — Oluşturuldu: İstekle belirtilen kaynak başarıyla oluşturuldu.
+202 — Kabul Edildi/Onaylandı: İstek kabul edildi, ancak işleme konulmadı veya henüz tamamlanmadı.
+203 — Yetersiz Bilgi: İstekle ilgili bilgi yetersiz veya eksik olduğu için sunucu tarafından yanıt verildi.
+204 — İçerik Yok: İstekle ilgili olarak geri dönülecek bir içerik bulunamadı.
+205 — İçeriği Baştan Al: İstekle ilgili içeriği baştan almak için istemcinin bir geri dönüş yapması istenir.
+206 — Kısmi İçerik: Sunucu, sadece istemcinin istediği kısmi içeriği döndürebildi.
+207 — Çoklu Statü: Birden fazla kaynak için farklı durumlar bildiren bir cevap döndürüldü.
+210 — Farklı İçerik: İstekle ilgili olarak sunucunun farklı bir içerik sunma niyeti belirtildi.
+
+
+3xx: Yönlendirme
+
+Bu sınıf, bir yönlendirme söz konusu olduğunda gösterilen ve ulaşılmak istenen bilginin, başka bir kaynağa taşındığını bildiren HTTP durum kodlarından oluşur. 3xx sınıfındaki kodlar şu şekildedir:
+
+300 — Çoklu Seçenek: İstemci, birçok seçenek arasından birini seçmek zorundadır.
+301 — Kalıcı Yönlendirme: İstenen kaynak kalıcı olarak başka bir URI'ye taşındı. İstemci, gelecekte bu yeni URI'yi kullanmalıdır.
+302 — Geçici Yönlendirme: İstenen kaynak geçici olarak başka bir URI'ye taşındı. İstemci, bu yeni URI'yi kullanabilir, ancak gelecekte tekrar orijinal URI'yi denemelidir.
+303 — Diğerlerine Bak: İstemci, diğer bir URI'ye yönlendirilmelidir. Bu genellikle bir form gönderildikten sonra yapılır.
+304 — Güncellenmemiş/Değiştirilmemiş: İstemci tarafından yapılan koşullu bir istek, sunucuda kaynakta herhangi bir değişiklik olmadığını belirtir.
+305 — Proxy Kullan: İstemci, bir proxy kullanarak isteği tekrarlamalıdır.
+307 — Geçici Olarak Yeniden Yönlendirme: İstenen kaynak geçici olarak başka bir URI'ye taşındı. İstemci, bu yeni URI'yi kullanabilir, ancak gelecekte tekrar orijinal URI'yi denemelidir.
+
+
+4xx: İstemci Hatası
+
+Bu sınıf, tarayıcı tarafından gönderilen isteğe konu olan web sitesine veya sayfaya ulaşılamadığında gösterilen ve isteğin yerine getirilemediğini ifade eden HTTP durum kodlarını içerir. 4xx sınıfındaki kodlar şöyle sıralanır:
+100 — Kötü/Hatalı İstek: Sunucu, isteği anlamadı veya istek hatalıdır.
+401 — Yetki Sorunu: İstek için yetki gereklidir. Kullanıcı, kimlik doğrulaması yapmalı veya gerekli yetkilere sahip olmalıdır.
+402 — Ödeme Gerekli: İstek için ödeme gereklidir. Özellikle abonelik tabanlı hizmetlerde kullanılır.
+403 — Yasaklandı/Erişim İzni Sorunu: İstek yasaklandı, sunucu tarafından erişim izni verilmedi.
+404 — Bulunamadı: İstenen kaynak sunucuda bulunamadı.
+405 — İzin Verilmeyen Yöntem: İstek için kullanılan HTTP yöntemi sunucu tarafından desteklenmiyor veya izin verilmiyor.
+406 — Kabul Edilemez: İstemci tarafından gönderilen istek, sunucu tarafından kabul edilemez veya uygun değildir.
+407 — Proxy Üzerinden Yetkilendirme Gerekli: İstek, yetkilendirilmiş bir proxy üzerinden gönderilmelidir.
+408 — Zaman Aşımı: Sunucu, isteği zamanında işleyemedi.
+409 — Çakışma: İstek, sunucuda bir çakışma veya tutarsızlık oluşturdu.
+410 — Kaynak Artık Yok/Kalıcı Olarak Bulunmuyor: İstenen kaynak artık sunucuda bulunmuyor veya kalıcı olarak kaldırıldı.
+411 — Uzunluk (İçerik Boyutu) Gerekli: Sunucu, isteğin içeriğinin uzunluğunu belirtmek için bir uzunluk gerektiriyor.
+412 — Ön Koşul Başarısız: İstekte belirtilen ön koşullar sunucu tarafından karşılanamadı veya doğrulanamadı.
+413 — Girilen Veri Çok Fazla: İstek, sunucunun işleyebileceğinden daha fazla veri içeriyor.
+414 — İstek URL'i Çok Büyük: İstek URL'si sunucu tarafından işlenemeyecek kadar büyük.
+415 — Desteklenmeyen Medya Tipi: Sunucu, istemcinin desteklenmeyen bir medya tipi ile istek gönderdiğini belirtiyor.
+416 — Kaynak Kısmi Geçersiz: Sunucu, isteği karşılarken belirli bir kısmını veya aralığını işleyemiyor.
+417 — İstek Başarısız: Sunucu, isteği yerine getiremedi veya başarısız oldu.
+422 — İşlenemeyen Varlık: Sunucu, isteğin içeriğini işleyemedi veya doğrulayamadı.
+423 — Kilitli: Kaynak kilitli olduğu için istek başarısız oldu.
+424 — Kaynak İşleme Alınamadı: Sunucu, isteğin işlenmesi için kaynağa erişemiyor.
+425 — Çok Erken: İstek sunucuya ulaşmadan önce çok erken gerçekleşti.
+426 — Yükseltme Gerekli: İstemci, güvenli bir protokole geçiş yapmalıdır.
+428 — Ön Koşul Gerekli: Sunucu, isteğin gerçekleştirilmesi için belirli bir ön koşulu gerektiriyor.
+429 — Çok Fazla İstek: İstemci, belirli bir süre içinde çok fazla istekte bulundu ve sınırlar aşıldı.
+451 — Yasal Nedenlerle Kullanılamıyor: İstek, yasal nedenlerle sunucu tarafından kullanılamıyor veya erişilemiyor.
+
+
+5xx: Sunucu Hatası
+
+Kullanıcı isteğinin sunucuya başarılı bir şekilde ulaşması fakat sunucu kaynaklı sorunlar nedeniyle isteğin yerine getirilememesi hâlinde gösterilen kodların sınıfıdır. 5xx HTTP durum kodları şunlardır:
+
+500 — Sunucu Hatası: Sunucu, beklenmeyen bir iç hatayla karşılaştı ve isteği yerine getiremedi.
+501 — İstek Uygulanmadı: Sunucu, isteği yerine getirmek için gerekli yeteneklere sahip değil veya istek yapılan HTTP yöntemi desteklenmiyor.
+502 — Kötü Ağ Geçidi: Sunucu, bir ağ geçidi veya proxy olarak hizmet veriyorsa ve üst düzey sunucudan geçen yanıtı geçersiz veya yanıt veremiyor.
+503 — Sunucu Kullanılamıyor: Sunucu, geçici olarak hizmet dışı veya erişilemez durumda. Bu genellikle aşırı yükleme veya bakım nedeniyle olabilir.
+504 — Ağ Geçidi Zaman Aşımı: Sunucu, bir ağ geçidi veya proxy olarak hizmet veriyorsa ve istemciye cevap alırken zaman aşımına uğradı.
+505 — HTTP Sürümü Desteklenmiyor: Sunucu, istemcinin kullandığı HTTP protokol sürümünü desteklemiyor.
+507 — Yetersiz Depolama: Sunucu, isteği işlemek için yeterli depolama alanına sahip değil.
+509 — Bant Genişliği Sınırı Aşıldı: Sunucu, aşırı talep nedeniyle bant genişliği sınırına ulaştı veya aşıldı.
+511 — Ağ Kimlik Doğrulaması Gerekli: Ağ erişimi gerektiren bir kaynağa erişmek için kimlik doğrulama gereklidir.
+521 — Web Sunucusu Kapalı: Sunucu, erişilemiyor veya kapalı durumda.
+
+
+En Sık Karşılaşılan Durum Kodları Hangileridir?
+
+HTTP protokolünde birçok durum kodu bulunmasına rağmen, bazı durum kodları daha sık karşılaşılır ve önemlidir. Bu durum kodlarından biri de 200 Durum Kodu (Başarılı)'dur.
+
+Sunucudan tarayıcıya 200 durum kodu gönderiliyorsa, her şey yolunda demektir. En ideal durum kodu budur ve kullanıcı, sitenizi olması gerektiği gibi görüntüler. Bu durum kodu, istemcinin isteğinin sunucu tarafından başarıyla tamamlandığını ve istenen içeriğin sorunsuz bir şekilde sunucudan alındığını belirtir.
+
+Kullanıcılar, web sitelerine erişirken genellikle 200 durum koduyla karşılaşırlar çünkü istenen içerik sorunsuz bir şekilde sunucudan alınmıştır. Bu durum kodu, kullanıcı deneyimini iyileştiren ve web sitelerinin verimli bir şekilde çalışmasını sağlayan temel bir bileşendir.
+
+301 Durum Kodu (Kalıcı Yönlendirme)
+
+301 durum kodu, en önemli durum kodlarından biridir. Bir URL adresindeki sayfanın kalıcı olarak başka bir sayfaya yönlendirilmesi durumunda kullanılır. Bu kod, tarayıcıya ve arama motorlarına, eski URL'yi artık kullanmamalarını ve otomatik olarak yeni sayfaya yönlendiklerini belirtir.
+
+Kalıcı yönlendirme, web sitesinin yapısal değişikliklerinde veya sayfaların taşınmasında sıklıkla kullanılır. Örneğin, bir web sitesi sahibi bir sayfanın URL'sini değiştirmek istediğinde, eski URL'yi ziyaret eden kullanıcılar ve arama motorları, 301 durum koduyla yeni sayfaya yönlendirilirler.
+
+
+Bu kodun kullanılması önemlidir çünkü:
+
+Kullanıcı deneyimini iyileştirir: Kullanıcılar, eski URL'yi ziyaret ettiklerinde otomatik olarak yeni sayfaya yönlendirildikleri için, istedikleri içeriği hızlı bir şekilde bulabilirler.
+
+SEO açısından önemlidir: Arama motorları, 301 durum kodunu algılayarak eski URL'nin içeriğini yeni URL ile ilişkilendirir. Bu, arama motorlarının eski URL'yi indeksleme ve yeni URL'yi arama sonuçlarında gösterme sürecini hızlandırır.
+
+Ziyaretçi kaybını minimuma indirir: Eski URL'yi ziyaret eden kullanıcılar, 301 yönlendirmesi sayesinde yeni sayfaya otomatik olarak yönlendirilirler, böylece web sitesi sahibi potansiyel ziyaretçilerini kaybetmez.
+
+301 durum kodu, web sitesinin yapısal değişikliklerinde veya sayfaların taşınmasında kullanılarak kullanıcı deneyimini ve SEO performansını iyileştiren önemli bir araçtır.
+
+
+302 Durum Kodu (Geçici Yönlendirme)
+
+302 durum kodu, test aşamasında veya bakım sürecinde olan bir sayfanın geçici olarak başka bir sayfaya yönlendirilmesini sağlayan bir koddur. Bu durum kodu, tarayıcıya ve arama motorlarına, geçici olarak başka bir kaynağa yönlendirildiğini belirtir, ancak bu yönlendirmenin kalıcı olmadığını ifade eder.
+
+E-ticaret sitelerinde, bir ürünün stokları tükendiğinde veya belirli bir süre için satıştan kaldırıldığında, kullanıcılara geçici olarak başka bir ürünün sayfasını göstermek için 302 durum kodu kullanılabilir. Bu durumda, kullanıcılar istedikleri ürünün sayfasına erişmeye çalıştıklarında, geçici olarak başka bir ürünün sayfasına yönlendirilirler. Ancak, ürün stokları yenilendiğinde veya bakım tamamlandığında, yönlendirme kaldırılır ve kullanıcılar tekrar istedikleri ürünün sayfasına yönlendirilir.
+
+302 durum kodunun kullanılması önemlidir çünkü:
+
+Kullanıcı deneyimini korur: Geçici olarak bir sayfanın başka bir sayfaya yönlendirilmesi, kullanıcıların istedikleri içeriği bulmalarını engellemez ve kullanıcı deneyimini olumsuz etkilemez.
+
+SEO'ya zarar vermez: Geçici yönlendirmeler, arama motorları tarafından kalıcı yönlendirmeler kadar ciddiye alınmaz. Bu nedenle, geçici olarak başka bir sayfaya yapılan yönlendirmeler, web sitesinin SEO performansını olumsuz etkilemez.
+
+Bakım sürecinde kullanışlıdır: Bakım veya güncelleme sürecinde olan bir sayfanın, geçici olarak başka bir sayfaya yönlendirilmesi, web sitesinin erişilebilirliğini korur ve kullanıcıların beklemelerini azaltır.
+
+302 durum kodu, web sitesi yöneticilerine, belirli durumlarda kullanıcı deneyimini korumak ve web sitesinin erişilebilirliğini sürdürmek için geçici yönlendirmeler yapma imkanı sağlar.
+
+
+403 Durum Kodu (Erişim İzni Sorunu)
+
+403 durum kodu, belirli bir sayfaya ulaşabilmek için tarayıcı tarafından sunucuya gönderilen isteğe karşılık, söz konusu sayfanın yasaklandığını veya ilgili sayfaya erişim izninin bulunmadığını ifade etmek için kullanılır.
+
+Bu durum kodu, kullanıcının istenen içeriğe erişim izninin olmadığını gösterir. Örneğin, bir web sitesi yöneticisi, belirli bir bölüme sınırlı erişime sahip kullanıcılar için erişim kısıtlamaları uygulamış olabilir. Bu durumda, bu kullanıcılar ilgili bölüme erişmeye çalıştıklarında 403 durum koduyla karşılaşırlar.
+
+403 durum kodunun kullanılması önemlidir çünkü:
+
+Güvenlik sağlar: Belirli sayfalara sadece belirli kullanıcıların erişimine izin vermek, web sitesinin güvenliğini sağlar ve hassas bilgilerin korunmasına yardımcı olur.
+
+İzinleri kontrol eder: Web sitesi yöneticileri, hangi kullanıcıların hangi içeriğe erişebileceğini kontrol etmek için erişim izinlerini yönetebilirler.
+
+Kullanıcıları yönlendirir: Kullanıcılar, erişim izinleri olmayan bir sayfaya erişmeye çalıştıklarında, 403 durum koduyla karşılaşırlar ve bu durumda alternatif içerik veya sayfalara yönlendirilebilirler.
+
+Bu nedenlerden dolayı, 403 durum kodu, web sitesi yöneticilerine belirli içeriklere erişim izni olmayan kullanıcıları yönlendirmek ve güvenliği sağlamak için önemli bir araçtır.
+
+
+404 Durum Kodu (Bulunamadı)
+
+404 durum kodu, kullanıcıların en sık karşılaştığı ve hata bildiren HTTP durum kodlarından biridir. Bu kod, tarayıcının sunucuya gönderdiği istekle ilgili sayfanın sunucuda bulunamadığını ifade eder.
+
+Kullanıcılar, bir web sitesinde gezinirken belirli bir sayfaya erişmeye çalıştıklarında ve sunucu, istenen sayfayı bulamadığında, tarayıcılarına 404 durum koduyla birlikte ilgili bir hata sayfası gönderilir. Bu durum genellikle, bir sayfanın URL'sinin yanlış yazılması, sayfanın taşınması veya silinmesi gibi durumlarda ortaya çıkar.
+
+404 durum kodunun kullanılması önemlidir çünkü:
+
+Kullanıcıya bilgi verir: 404 durum kodu, kullanıcının istenen sayfaya erişilemediğini ve neden erişilemediğini açık bir şekilde belirtir. Bu, kullanıcının neden istediği içeriğe erişemediğini anlamasına yardımcı olur.
+
+Web sitesinin sağlığını gösterir: Web sitesinde bulunamayan sayfalar, bir URL'nin yanlış yazılması veya bir sayfanın taşınması gibi hataları gösterebilir. Bu durum, web sitesinin sağlığını kontrol etmek ve olası hataları düzeltmek için bir fırsat sağlar.
+
+Kullanıcı deneyimini iyileştirir: Kullanıcılar, 404 durum koduyla karşılaştıklarında, genellikle web sitesinde arama yaparlar veya alternatif içeriklere yönlendirilirler. Bu, kullanıcıların web sitesinde gezinme deneyimini iyileştirmeye yardımcı olur.
+
+Bu nedenlerle, 404 durum kodu, kullanıcı deneyimini iyileştirmek ve web sitesinin sağlığını göstermek için önemli bir araçtır.
+
+
+410 Durum Kodu (Kalıcı Olarak Bulunmuyor)
+
+410 durum kodu da 404 durum koduna benzer şekilde, istenen sayfanın sunucuda bulunmadığını bildirir. Ancak, aralarındaki temel fark, 410 durum kodunu içeren sayfaların kalıcı olarak silinmiş ve geri gelmeyecek olduğudur. Bu durum, tarayıcının ve arama motorlarının, sayfanın artık mevcut olmadığını kalıcı olarak kabul etmelerini sağlar.
+
+404 durum kodunu içeren sayfalar genellikle güncellenir veya yeniden oluşturulur ve dolayısıyla yeniden erişilebilir hale gelirken, 410 kodlu sayfalar tamamen silindiği için geri gelmeyeceklerdir. Bu nedenle, tarayıcılar ve arama motorları, 410 kodunu içeren sayfaları daha hızlı bir şekilde dizinden çıkarır ve kullanıcıya veya arama sonuçlarına dahil etmez.
+
+410 durum kodunun kullanılması önemlidir çünkü:
+
+Kullanıcıya açık bilgi verir: 410 durum kodu, kullanıcılara istedikleri içeriğin artık mevcut olmadığını ve neden erişilemediğini açık bir şekilde belirtir. Bu, kullanıcıların zamanlarını boşa harcamamalarını sağlar.
+
+Arama motorlarını günceller: Arama motorları, 410 durum kodunu gördüklerinde, sayfanın artık mevcut olmadığını kabul ederler ve dizinden kaldırırlar. Bu, arama sonuçlarının güncel ve doğru kalmasına yardımcı olur.
+
+Web sitesinin sağlığını gösterir: 410 durum kodu, web sitesindeki sayfaların sürekli olarak güncellenip yönetildiğini ve gereksiz veya eski içeriğin temizlendiğini gösterir. Bu, web sitesinin sağlığını gösterir ve kullanıcı deneyimini iyileştirir.
+
+Bu nedenlerle, 410 durum kodu, kullanıcı deneyimini iyileştirmek ve web sitesinin sağlığını göstermek için önemli bir araçtır.
+
+
+500 Durum Kodu (Sunucu Hatası)
+
+500 durum kodu, sunucuda bir hata oluştuğunu ve sunucu kaynaklı bir sorunun olduğunu belirtir. Bu durum, istemcinin (tarayıcının) gönderdiği isteği işleme alırken sunucunun beklenmedik bir hatayla karşılaştığını gösterir. Bu hatanın nedeni genellikle sunucunun aşırı yüklenmesi, yazılım hataları veya sunucu konfigürasyonundaki sorunlar olabilir.
+
+500 durum kodunun kullanılması önemlidir çünkü:
+
+Kullanıcıya bilgi verir: 500 durum kodu, kullanıcılara sunucuda bir hata olduğunu ve istedikleri içeriğe şu anda erişilemediğini açıkça belirtir. Bu, kullanıcıların beklemek veya daha sonra tekrar denemek için bilgilendirilmesini sağlar.
+
+Sorunun tespitine yardımcı olur: 500 durum kodu, sunucu tarafındaki hataların tespit edilmesine ve giderilmesine yardımcı olur. Sunucu yöneticileri, 500 durum kodunu aldıklarında hemen sorunları tespit etmeye ve çözmeye yönelik adımlar atmaya teşvik edilirler.
+
+Web sitesinin güvenilirliğini gösterir: Web sitesi ziyaretçileri, sunucu hatalarıyla karşılaştıklarında güvenlerini kaybedebilirler. Bu nedenle, sunucu hatalarının hızlı bir şekilde çözülmesi, web sitesinin güvenilirliğini artırır ve kullanıcıların memnuniyetini sağlar.
+
+Bu nedenlerle, 500 durum kodu, sunucu hatalarının tespit edilmesi ve çözülmesi için önemli bir uyarı işaretidir.
+
+503 Durum Kodu (Sunucu Kullanılamıyor)
+
+503 durum kodu, sunucunun geçici olarak kullanılamaz durumda olduğunu ve isteklere yanıt veremediğini belirtir. Bu durum genellikle sunucunun aşırı yüklenmesi, bakım çalışmaları, teknik sorunlar veya bant genişliği sınırlamaları gibi geçici durumlar nedeniyle ortaya çıkar.
+
+503 durum kodunun kullanılması önemlidir çünkü:
+
+Kullanıcıya bilgi verir: 503 durum kodu, kullanıcılara sunucunun geçici olarak kullanılamaz olduğunu ve istedikleri içeriğe şu anda erişilemediğini açıkça belirtir. Bu, kullanıcıların durumun farkında olmalarını ve daha sonra tekrar denemek için bilgilendirilmelerini sağlar.
+
+Sorunun tespitine yardımcı olur: Sunucu yöneticileri, 503 durum kodunu aldıklarında, sunucunun neden geçici olarak kullanılamaz hale geldiğini belirlemeye ve sorunu gidermeye çalışırlar. Bu, sunucu performansını iyileştirmek ve benzer sorunların tekrarlanmasını önlemek için önemlidir.
+
+Web sitesinin güvenilirliğini gösterir: Kullanıcılar, sürekli olarak erişim sorunlarıyla karşılaştıklarında güvenlerini kaybedebilirler. Bu nedenle, sunucu hatalarının hızlı bir şekilde çözülmesi ve istikrarlı bir hizmet sunulması, web sitesinin güvenilirliğini artırır ve kullanıcı memnuniyetini sağlar.
+
+Bu nedenlerle, 503 durum kodu, sunucunun geçici olarak kullanılamaz olduğunu ve sorunun tespiti ve çözülmesi için hızlı bir müdahale gerektiğini belirtir.
